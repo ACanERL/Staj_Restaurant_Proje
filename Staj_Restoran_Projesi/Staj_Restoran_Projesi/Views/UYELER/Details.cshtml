@@ -1,0 +1,74 @@
+﻿@model Staj_Restoran_Projesi.Models.UYELER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UYELER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RESTAURANTADI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RESTAURANTADI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KULLANICIEPOSTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KULLANICIEPOSTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KULLANICISIFRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KULLANICISIFRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KAYITTARIHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KAYITTARIHI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ONAYYARIHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ONAYYARIHI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GUID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GUID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

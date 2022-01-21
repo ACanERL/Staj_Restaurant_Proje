@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "MenuAnasayfa";
+}
+
+<h2>MenuAnasayfa</h2>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Restaurant REZ", "MenuAnasayfa", "MENULER", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                @if (Session["KULLANICIEPOSTA"] == null)
+                {
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                }
+                else
+                {
+                  
+                    <li>@Html.ActionLink("Menu Oluştur", "Create", "MENULER")</li>
+                    <li>@Html.ActionLink("Çıkış Yap", "CIKIS", "UYELER")</li>
+
+                }
+
+            </ul>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
+

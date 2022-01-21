@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="restaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MENULER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UYEID" Type="bigint" Nullable="false" />
+          <Property Name="FIYAT" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RESIM" Type="nvarchar" MaxLength="255" />
+          <Property Name="SIRA" Type="int" />
+          <Property Name="MENUGRUBU" Type="int" Nullable="false" />
+          <Property Name="STATUS" Type="bit" Nullable="false" />
+          <Property Name="KAYITTARIHI" Type="datetime" Nullable="false" />
+          <Property Name="GUNCELLEMETARIHI" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UYELER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RESTAURANTADI" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="KULLANICIEPOSTA" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="KULLANICISIFRE" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="KAYITTARIHI" Type="datetime" Nullable="false" />
+          <Property Name="ONAYYARIHI" Type="datetime" />
+          <Property Name="STATUS" Type="bit" Nullable="false" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__MENULER__UYEID__1FCDBCEB">
+          <End Role="UYELER" Type="Self.UYELER" Multiplicity="1" />
+          <End Role="MENULER" Type="Self.MENULER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UYELER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENULER">
+              <PropertyRef Name="UYEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="restaurantModelStoreContainer">
+          <EntitySet Name="MENULER" EntityType="Self.MENULER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UYELER" EntityType="Self.UYELER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__MENULER__UYEID__1FCDBCEB" Association="Self.FK__MENULER__UYEID__1FCDBCEB">
+            <End Role="UYELER" EntitySet="UYELER" />
+            <End Role="MENULER" EntitySet="MENULER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="restaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MENULER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UYEID" Type="Int64" Nullable="false" />
+          <Property Name="FIYAT" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RESIM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SIRA" Type="Int32" />
+          <Property Name="MENUGRUBU" Type="Int32" Nullable="false" />
+          <Property Name="STATUS" Type="Boolean" Nullable="false" />
+          <Property Name="KAYITTARIHI" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GUNCELLEMETARIHI" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UYELER" Relationship="Self.FK__MENULER__UYEID__1FCDBCEB" FromRole="MENULER" ToRole="UYELER" />
+        </EntityType>
+        <EntityType Name="UYELER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RESTAURANTADI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KULLANICIEPOSTA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KULLANICISIFRE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KAYITTARIHI" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ONAYYARIHI" Type="DateTime" Precision="3" />
+          <Property Name="STATUS" Type="Boolean" Nullable="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="MENULER" Relationship="Self.FK__MENULER__UYEID__1FCDBCEB" FromRole="UYELER" ToRole="MENULER" />
+        </EntityType>
+        <Association Name="FK__MENULER__UYEID__1FCDBCEB">
+          <End Role="UYELER" Type="Self.UYELER" Multiplicity="1" />
+          <End Role="MENULER" Type="Self.MENULER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UYELER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENULER">
+              <PropertyRef Name="UYEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="restaurantEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MENULER" EntityType="Self.MENULER" />
+          <EntitySet Name="UYELER" EntityType="Self.UYELER" />
+          <AssociationSet Name="FK__MENULER__UYEID__1FCDBCEB" Association="Self.FK__MENULER__UYEID__1FCDBCEB">
+            <End Role="UYELER" EntitySet="UYELER" />
+            <End Role="MENULER" EntitySet="MENULER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="restaurantModelStoreContainer" CdmEntityContainer="restaurantEntities">
+          <EntitySetMapping Name="MENULER">
+            <EntityTypeMapping TypeName="restaurantModel.MENULER">
+              <MappingFragment StoreEntitySet="MENULER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UYEID" ColumnName="UYEID" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="RESIM" ColumnName="RESIM" />
+                <ScalarProperty Name="SIRA" ColumnName="SIRA" />
+                <ScalarProperty Name="MENUGRUBU" ColumnName="MENUGRUBU" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="KAYITTARIHI" ColumnName="KAYITTARIHI" />
+                <ScalarProperty Name="GUNCELLEMETARIHI" ColumnName="GUNCELLEMETARIHI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UYELER">
+            <EntityTypeMapping TypeName="restaurantModel.UYELER">
+              <MappingFragment StoreEntitySet="UYELER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RESTAURANTADI" ColumnName="RESTAURANTADI" />
+                <ScalarProperty Name="KULLANICIEPOSTA" ColumnName="KULLANICIEPOSTA" />
+                <ScalarProperty Name="KULLANICISIFRE" ColumnName="KULLANICISIFRE" />
+                <ScalarProperty Name="KAYITTARIHI" ColumnName="KAYITTARIHI" />
+                <ScalarProperty Name="ONAYYARIHI" ColumnName="ONAYYARIHI" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

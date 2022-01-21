@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Staj_Restoran_Projesi.Models.MENULER>
+@{
+    ViewBag.Title = "Menüler Sayfası";
+}
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "MENULER", FormMethod.Post))
+{
+    <p>
+        @Html.ActionLink("Menu Oluştur", "Create")
+    </p>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container" >
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Restaurant REZ", "Index", "MENULER", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    @if (Session["KULLANICIEPOSTA"] == null)
+                    {
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Menu Oluştur", "Create", "MENULER")</li>
+                        <li>@Html.ActionLink("Çıkış Yap", "CIKIS", "UYELER")</li>
+                        <li>@Html.ActionLink("QRCode İndir", "indir", "MENULER")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FIYAT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ACIKLAMA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RESIM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SIRA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MENUGRUBU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.STATUS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KAYITTARIHI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GUNCELLEMETARIHI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UYELER.RESTAURANTADI)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FIYAT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ACIKLAMA)
+                </td>
+                <td>
+                    <img src="~/Resimler/@item.RESIM" alt="image" width="100" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SIRA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MENUGRUBU)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.STATUS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KAYITTARIHI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GUNCELLEMETARIHI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UYELER.RESTAURANTADI)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    
+    if (ViewBag.QRCode != null)
+
+    {
+        <img src="@ViewBag.QRCode" style="width:200px;height:200px;" />
+    }
+}
+

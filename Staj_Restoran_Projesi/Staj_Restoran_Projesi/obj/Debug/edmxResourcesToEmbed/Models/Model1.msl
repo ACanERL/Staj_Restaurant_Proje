@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="restaurantModelStoreContainer" CdmEntityContainer="restaurantEntities">
+    <EntitySetMapping Name="MENULER">
+      <EntityTypeMapping TypeName="restaurantModel.MENULER">
+        <MappingFragment StoreEntitySet="MENULER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UYEID" ColumnName="UYEID" />
+          <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+          <ScalarProperty Name="RESIM" ColumnName="RESIM" />
+          <ScalarProperty Name="SIRA" ColumnName="SIRA" />
+          <ScalarProperty Name="MENUGRUBU" ColumnName="MENUGRUBU" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="KAYITTARIHI" ColumnName="KAYITTARIHI" />
+          <ScalarProperty Name="GUNCELLEMETARIHI" ColumnName="GUNCELLEMETARIHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UYELER">
+      <EntityTypeMapping TypeName="restaurantModel.UYELER">
+        <MappingFragment StoreEntitySet="UYELER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RESTAURANTADI" ColumnName="RESTAURANTADI" />
+          <ScalarProperty Name="KULLANICIEPOSTA" ColumnName="KULLANICIEPOSTA" />
+          <ScalarProperty Name="KULLANICISIFRE" ColumnName="KULLANICISIFRE" />
+          <ScalarProperty Name="KAYITTARIHI" ColumnName="KAYITTARIHI" />
+          <ScalarProperty Name="ONAYYARIHI" ColumnName="ONAYYARIHI" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

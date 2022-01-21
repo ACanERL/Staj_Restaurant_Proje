@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="restaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MENULER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UYEID" Type="Int64" Nullable="false" />
+    <Property Name="FIYAT" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="ACIKLAMA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RESIM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SIRA" Type="Int32" />
+    <Property Name="MENUGRUBU" Type="Int32" Nullable="false" />
+    <Property Name="STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="KAYITTARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GUNCELLEMETARIHI" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UYELER" Relationship="Self.FK__MENULER__UYEID__1FCDBCEB" FromRole="MENULER" ToRole="UYELER" />
+  </EntityType>
+  <EntityType Name="UYELER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RESTAURANTADI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KULLANICIEPOSTA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KULLANICISIFRE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KAYITTARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ONAYYARIHI" Type="DateTime" Precision="3" />
+    <Property Name="STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="GUID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="MENULER" Relationship="Self.FK__MENULER__UYEID__1FCDBCEB" FromRole="UYELER" ToRole="MENULER" />
+  </EntityType>
+  <Association Name="FK__MENULER__UYEID__1FCDBCEB">
+    <End Role="UYELER" Type="Self.UYELER" Multiplicity="1" />
+    <End Role="MENULER" Type="Self.MENULER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UYELER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MENULER">
+        <PropertyRef Name="UYEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="restaurantEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MENULER" EntityType="Self.MENULER" />
+    <EntitySet Name="UYELER" EntityType="Self.UYELER" />
+    <AssociationSet Name="FK__MENULER__UYEID__1FCDBCEB" Association="Self.FK__MENULER__UYEID__1FCDBCEB">
+      <End Role="UYELER" EntitySet="UYELER" />
+      <End Role="MENULER" EntitySet="MENULER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

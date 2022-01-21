@@ -1,0 +1,80 @@
+﻿@model Staj_Restoran_Projesi.Models.UYELER
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>UYELER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RESTAURANTADI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RESTAURANTADI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KULLANICIEPOSTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KULLANICIEPOSTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KULLANICISIFRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KULLANICISIFRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KAYITTARIHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KAYITTARIHI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ONAYYARIHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ONAYYARIHI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GUID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GUID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

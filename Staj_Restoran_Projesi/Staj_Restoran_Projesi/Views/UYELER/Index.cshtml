@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Staj_Restoran_Projesi.Models.UYELER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RESTAURANTADI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KULLANICIEPOSTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KULLANICISIFRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KAYITTARIHI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ONAYYARIHI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GUID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RESTAURANTADI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KULLANICIEPOSTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KULLANICISIFRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KAYITTARIHI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ONAYYARIHI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GUID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

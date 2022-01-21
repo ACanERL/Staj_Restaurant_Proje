@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6cfd03b5605d4c139cd0ec404eeca77b" Name="Diagram1" ZoomLevel="131">
+        <EntityTypeShape EntityType="restaurantModel.MENULER" Width="1.5" PointX="6.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantModel.UYELER" Width="1.5" PointX="3.375" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="restaurantModel.FK__MENULER__UYEID__1FCDBCEB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

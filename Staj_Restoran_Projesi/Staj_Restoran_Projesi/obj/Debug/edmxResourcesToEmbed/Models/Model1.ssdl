@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="restaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MENULER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UYEID" Type="bigint" Nullable="false" />
+    <Property Name="FIYAT" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="RESIM" Type="nvarchar" MaxLength="255" />
+    <Property Name="SIRA" Type="int" />
+    <Property Name="MENUGRUBU" Type="int" Nullable="false" />
+    <Property Name="STATUS" Type="bit" Nullable="false" />
+    <Property Name="KAYITTARIHI" Type="datetime" Nullable="false" />
+    <Property Name="GUNCELLEMETARIHI" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UYELER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RESTAURANTADI" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="KULLANICIEPOSTA" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="KULLANICISIFRE" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="KAYITTARIHI" Type="datetime" Nullable="false" />
+    <Property Name="ONAYYARIHI" Type="datetime" />
+    <Property Name="STATUS" Type="bit" Nullable="false" />
+    <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__MENULER__UYEID__1FCDBCEB">
+    <End Role="UYELER" Type="Self.UYELER" Multiplicity="1" />
+    <End Role="MENULER" Type="Self.MENULER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UYELER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MENULER">
+        <PropertyRef Name="UYEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="restaurantModelStoreContainer">
+    <EntitySet Name="MENULER" EntityType="Self.MENULER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UYELER" EntityType="Self.UYELER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__MENULER__UYEID__1FCDBCEB" Association="Self.FK__MENULER__UYEID__1FCDBCEB">
+      <End Role="UYELER" EntitySet="UYELER" />
+      <End Role="MENULER" EntitySet="MENULER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
